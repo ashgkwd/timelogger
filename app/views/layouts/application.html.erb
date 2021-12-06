@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Timelogs - made in hurry by Ashish 🙈</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+
+    <header>
+      <% if !devise_controller? %>
+        <% if @user != nil %>
+          <p>You are <%= @user.email %>. Click <%= link_to "here to logout", destroy_user_session_path, :method => :delete %></p>
+        <% else %>
+          <p>You need to sign in before you can start checking in the work hours. Click <%= link_to "here to sign in", new_user_session_path %> or if you don't have account, you can click <%= link_to "here to create account", new_user_registration_path %></p>
+        <% end %>
+      <% end %>
+    </header>
+
+    <%= yield %>
+  </body>
+</html>
