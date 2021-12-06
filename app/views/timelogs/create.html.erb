@@ -1,2 +1,7 @@
-<h1>Timelogs#create</h1>
-<p>Find me in app/views/timelogs/create.html.erb</p>
+<h1>Timelogs Ongoing</h1>
+
+<p>You clocked in at <%= @timelog.clock_in.to_formatted_s(:short) %></p>
+
+<%= form_with model: @timelog do |form| %>
+  <%= form.submit "Clock Out" %>
+<% end %>
