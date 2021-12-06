@@ -32,4 +32,9 @@ class Timelog < ApplicationRecord
   def time?(val)
     val.is_a? Time
   end
+
+  def self.ongoing_or_new(user)
+    ongoing = find_by(clock_out: nil, user: user)
+    ongoing.present? ? ongoing : new
+  end
 end

@@ -1,1 +1,18 @@
 <h1>Timelogs</h1>
+
+<% if @timelog.clock_in.present? %>
+  <p>You clocked in at <%= @timelog.clock_in.to_formatted_s(:short) %></p>
+<% end %>
+
+<%= form_with model: @timelog do |form| %>
+  <%= form.submit @button %>
+<% end %>
+
+<dl>
+<% @timelogs.each do |t| %>
+  <p>
+  <dt>Clock In <%= t.clock_in.to_formatted_s(:short) %></dt>
+  <% if t.clock_out.present? %><dd>Clock Out <%= t.clock_out.to_formatted_s(:short) %></dt><% end %>
+  </p>
+<% end %>
+</dl>
