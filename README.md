@@ -1,24 +1,31 @@
-# README
+# Timelogger
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+> It is a Rails app that allows users to track their timings.
 
-Things you may want to cover:
+It is hosted at https://ashgkwd-timelogger.herokuapp.com/
 
-* Ruby version
+## Basic usage
 
-* System dependencies
+1. Create account
+1. Sign in (if not already)
+1. Click on "Clock In" to start your working hours
+1. Click on "Clock Out" whenever you are done
+1. On the home page you can see all the check ins you have done
 
-* Configuration
+## To run app locally
 
-* Database creation
+Add the following variables into your .env file
 
-* Database initialization
+```sh
+POSTGRES_PASSWORD=supersecretpassword
+POSTGRES_USER=mainapp
+HOST=localhost
+PORT=3000
+```
 
-* How to run the test suite
+And then run the following commands
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+1. `docker-compose build`
+1. `docker-compose up -d`
+1. `docker-compose run web rake db:create`
+1. `docker-compose run web rake db:migrate`
